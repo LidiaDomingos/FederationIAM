@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/FederationIAM/",
+  base: '/FederationIAM/',
   title: "IAM",
   description: "Centro de Federação de Usuários",
   themeConfig: {
