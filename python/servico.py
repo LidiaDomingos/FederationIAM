@@ -7,7 +7,7 @@ loop = True
 path_terraform = "/mnt/c/Terraform/FederationIAM/terraform"
 path_python = "/mnt/c/Terraform/FederationIAM/python"
 
-print("Bem vindo à interface de usuários.")
+print("\nBem vindo à interface de usuários.")
 print("----------------------------------")
 print("Inicializando o Terraform!")
 print("----------------------------------\n")

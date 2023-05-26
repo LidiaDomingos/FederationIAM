@@ -1,0 +1,157 @@
+/**
+ * Customize default theme styling by overriding CSS variables:
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ */
+
+/**
+ * Colors
+ * -------------------------------------------------------------------------- */
+
+ :root {
+    --vp-c-brand: #0ea5e9;
+    --vp-c-brand-light: #38bdf8;
+    --vp-c-brand-lighter: #7dd3fc;
+    --vp-c-brand-lightest: #bae6fd;
+    --vp-c-brand-dark: #0284c7;
+    --vp-c-brand-darker: #0369a1;
+    --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
+    --vp-c-brand-accent: #9333ea;
+  }
+  ::selection {
+    background-color: rgba(14 165 233 / .75);
+    color: #000000
+  }
+  
+  /**
+   * Component: Button
+   * -------------------------------------------------------------------------- */
+  
+  :root {
+    --vp-button-brand-border: var(--vp-c-brand-light);
+    --vp-button-brand-text: var(--vp-c-white);
+    --vp-button-brand-bg: var(--vp-c-brand);
+    --vp-button-brand-hover-border: var(--vp-c-brand-light);
+    --vp-button-brand-hover-text: var(--vp-c-white);
+    --vp-button-brand-hover-bg: var(--vp-c-brand-light);
+    --vp-button-brand-active-border: var(--vp-c-brand-light);
+    --vp-button-brand-active-text: var(--vp-c-white);
+    --vp-button-brand-active-bg: var(--vp-button-brand-bg);
+  }
+  
+  /**
+   * Component: Home
+   * -------------------------------------------------------------------------- */
+  
+  :root {
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: -webkit-linear-gradient(
+      120deg,
+      var(--vp-c-brand-accent) 10%,
+      var(--vp-c-brand)
+    );
+  
+    /* --vp-home-hero-image-background-image: linear-gradient(
+      -45deg,
+      var(--vp-c-brand-accent) 50%,
+      var(--vp-c-brand-light) 50%
+    );
+    --vp-home-hero-image-filter: blur(40px); */
+  }
+  
+  /* @media (min-width: 640px) {
+    :root {
+      --vp-home-hero-image-filter: blur(56px);
+    }
+  }
+  
+  @media (min-width: 960px) {
+    :root {
+      --vp-home-hero-image-filter: blur(72px);
+    }
+  } */
+  
+  /**
+   * Component: Custom Block
+   * -------------------------------------------------------------------------- */
+  
+  :root {
+    --vp-custom-block-tip-border: var(--vp-c-brand);
+    --vp-custom-block-tip-text: var(--vp-c-brand-darker);
+    --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  }
+  
+  .dark {
+    --vp-custom-block-tip-border: var(--vp-c-brand);
+    --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
+    --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  }
+  
+  /**
+   * Component: Algolia
+   * -------------------------------------------------------------------------- */
+  
+  .DocSearch {
+    --docsearch-primary-color: var(--vp-c-brand) !important;
+  }
+  
+  /**
+   * Component: Winsows code-group
+   * -------------------------------------------------------------------------- */
+  
+  .vp-code-group--windows > .tabs {
+    padding-left: 5.25rem;
+    position: relative;
+  }
+  .vp-code-group--windows > .tabs > div:nth-child(1),
+  .vp-code-group--windows > .tabs > div:nth-child(2),
+  .vp-code-group--windows > .tabs > div:nth-child(3) {
+    width: .7rem;
+    height: .7rem;
+    border-radius: 50%;
+    background-color: #f87171;
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+  }
+  .vp-code-group--windows > .tabs > div:nth-child(2) {
+    background-color: #fbbf24;
+    left: 2.5rem;
+  }
+  .vp-code-group--windows > .tabs > div:nth-child(3) {
+    background-color: #34d399;
+    left: 4rem;
+  }
+  .vp-code-group--windows > .tabs > label {
+    flex: 1 0 auto;
+    text-align: center;
+  }
+  
+  /**
+   * Others
+   * -------------------------------------------------------------------------- */
+  
+  main .VPHero {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  .aside-curtain {
+    display: none;
+  }
+  
+  .VPDocHero a.VPButton:not([href]) {
+    padding: 0;
+    color: initial;
+  }
+  .VPDocHero a.VPButton:not([href]):hover {
+    text-decoration: none;
+  }
+  .VPDocHero--small-image .VPImage{
+    width: 8rem;
+  }
+  .VPDocHero--medium-image .VPImage{
+    width: 10rem;
+  }
+  .VPDocHero--large-image .VPImage{
+    width: 12rem;
+  }
