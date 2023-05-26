@@ -8,7 +8,7 @@ A computação em nuvem é um modelo de fornecimento de serviços de computaçã
 
 Além disso, torna muito mais fácil o acesso á estruturas computacionais sem necessariamente ter que montar toda a estrutura fisíca que um servidor necessita, ou mesmo um data center, podendo apenas contratar um provedor, para ter acesso à armazenamento e milhares de servidores, além de diversos serviços próprios que cada provedor oferece. 
 
-<div style ="display:flex;align-items:center;justify-content:center;"><img src="image\what-is-the-cloud.png"></div>
+<div style ="display:flex;align-items:center;justify-content:center;"><img src="/image/what-is-the-cloud.png"></div>
 
 Um dos provedores mais famosos é a Amazon Web Services (AWS), que é exatamente o servioço que vai ser utilizado no projeto. Mais especificamente, a parte de usuários da AWS.
 
@@ -30,7 +30,7 @@ Com essa aplicação, se torna possível transformar o fluxo de dados que seria 
 
 A ideia desse roteiro é exatamente automatizar essa criação e atribuição de permissões de uma forma simplificada e somente a partir do terminal para um usuário root, ou seja, que controle todos os outros usuários, conforme ilustra a imagem a seguir:
 
-<div style ="display:flex;align-items:center;justify-content:center;"><img src="image/img_exemplo.svg"></div>
+<div style ="display:flex;align-items:center;justify-content:center;"><img src="/image/img_exemplo.svg"></div>
 
 Para isso, foi utilizado duas ferramentas principais para utilizar junto com a AWS, o Terraform junto com o Python.
 
