@@ -2,48 +2,120 @@
 outline: deep
 ---
 
-# Runtime API Examples
+# Integrando com Python
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+Para poder dar essa autonomia para o cliente, é necessário fazer um programa em python. O programa a seguir foi feito baseado na minha arquitetura de pastas e arquivos, e ele permite fazer apenas alguns fluxos de dados, não sendo tudo o que a infraestrutura criada em terraform permite. 
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+**servico.py**
+```python
+import json
+import os
 
-```md
-<script setup>
-import { useData } from 'vitepress'
+loop = True
 
-const { theme, page, frontmatter } = useData()
-</script>
+# Deve ser alterado.
+path_terraform = "/mnt/c/Terraform/FederationIAM/terraform"
+path_python = "/mnt/c/Terraform/FederationIAM/python"
 
-## Results
+print("\nBem vindo à interface de usuários.")
+print("----------------------------------")
+print("Inicializando o Terraform!")
+print("----------------------------------\n")
 
-### Theme Data
-<pre>{{ theme }}</pre>
+os.chdir(path_terraform)
+os.system("terraform init")
 
-### Page Data
-<pre>{{ page }}</pre>
+policy_admin = '["arn:aws:iam::aws:policy/AdministratorAccess"]'
+policy_readOnly = '["arn:aws:iam::aws:policy/IAMReadOnlyAccess"]'
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+while loop:
+    resposta = input("\nVocê deseja adicionar um novo usuário?(S/N)\n")
+    if resposta == "S" or resposta == "s":
+
+        print("\nUsuários disponíveis na AWS:\n")
+        os.chdir(path_python)
+
+        f = open('credentials.json')
+        data = json.load(f)
+        count_index = 0
+        for indice, dic in data.items():
+            print(f'{count_index}. {dic["name"]}')
+            count_index+=1
+        f.close()
+
+        index = input("\nA partir de qual usuário você deseja criar? Digite aqui o índice: \n")
+        for key, value in data.items():
+            if int(key) == int(index):
+                os.chdir(path_terraform)
+                with open('terraform.tfvars', 'r') as file:
+                    lines = file.readlines()
+                for i, line in enumerate(lines):
+                    if line.startswith('access_key' + ' = '):
+                        lines[i] = 'access_key' + ' = ' + f'"{value["access_key"]}"' +'\n' 
+                    elif line.startswith('secret_key' + ' = '):
+                        lines[i] = 'secret_key' + ' = ' + f'"{value["secret_key"]}"' + '\n'
+                file.close()
+
+                with open('terraform.tfvars', 'w') as file:
+                    file.writelines(lines)
+                file.close()
+
+        policy = input("\nQual política você deseja fornecer ao usuário?\n\n\t1. Administrator Access: Essa política concede permissões de administrador completo para todos os serviços e recursos da AWS.\n\t2. IAM Read Only Access: Essa política fornece somente permissões de leitura para visualizar recursos e configurações do IAM, não sendo possível fazer alterações, ou seja, esse usuário não consegue criar outros usuários.\n\n Digite aqui o índice da política desejada: \n")
+        nome = input("\nDigite aqui o nome do novo usuário: \n")
+        lista = []
+
+        with open('users.tf', 'r') as file:
+            lines = file.readlines()
+            for i, line in enumerate(lines):
+                lista.append(line)
+        file.close()
+
+        for i in range(0, len(lista)):
+            if "#" in lista[i]:
+                if policy == '1':
+                    chosen = policy_admin
+                else:
+                    chosen = policy_readOnly 
+                lista.insert(i, "\t}},\n")
+                lista.insert(i,'\t\t\tName' + ' = ' + f'"{nome}"' + "\n" )
+                lista.insert(i, '\t\ttags = {\n')
+                lista.insert(i, f'\t\tpolicy_arns = {chosen}\n')
+                lista.insert(i,'\t\tpath = "/"\n')
+                lista.insert(i,'\t\tname' + ' = ' + f'"{nome}"' + "\n" )
+                lista.insert(i,"\n\t" + f'{nome}' + ' = ' + '{\n')
+
+        with open('users.tf', "w") as f:
+            f.writelines(lista)
+        f.close()
+        
+        os.system("terraform plan")
+        os.system("terraform apply")
+        os.system("terraform output -json last_user_credentials > last_credential.json")
+        
+        if policy == '1':
+            last_credential = json.load(open('last_credential.json'))
+            os.chdir(path_python)
+            dic = json.load(open('credentials.json'))
+            novo_dic = {}
+            dic2 = {}
+            novo_dic[str(len(dic))] = {}
+            dic2["name"] = last_credential["name"]
+            dic2["access_key"] = last_credential["access_key"]
+            dic2["secret_key"] = last_credential["secret_key"]
+            novo_dic[str(len(dic))] = dic2
+            dic.update(novo_dic)
+
+            with open("credentials.json", 'w') as file:
+                json.dump(dic, file, indent = 2)
+                
+            file.close()
+
+    elif resposta == "N" or resposta == "n":
+        print("----------------------------------")
+        print("Tenha um bom dia!")
+        loop = False
+    else:
+        print("Por favor, digite uma resposta válida!")
 ```
 
-<script setup>
-import { useData } from 'vitepress'
-
-const { site, theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-
-## More
-
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+Esse programa em python se interliga com o Terraform de várias formas. Um dos pontos mais importantes foi a questão de pastas. Foi criado uma pasta chamada terraform e outra pasta chamada python, 

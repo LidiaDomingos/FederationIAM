@@ -32,6 +32,6 @@ A ideia desse roteiro é exatamente automatizar essa criação e atribuição de
 
 <div style ="display:flex;align-items:center;justify-content:center;"><img src="/image/img_exemplo.svg"></div>
 
-Para isso, foi utilizado duas ferramentas principais para utilizar junto com a AWS, o Terraform junto com o Python.
+Ou seja, por meio de interface no terminal criada com Python, os arquivos de Terraform são alterados de acordo com o que o cliente que utiliza o serviço do terminal necessita e digita. 
 
 </div>
