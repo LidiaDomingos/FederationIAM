@@ -337,6 +337,11 @@ Se for utilizar esse projeto e for colocar no git, lembre-se de utilizar o .giti
 *.tfvars.json
 *.json . Não libere de forma alguma suas senhas na internet!
 :::
+
+A composição de pastas final deve ser algo parecido com isso:
+
+<div style ="display:flex;align-items:center;justify-content:center;"><img src="/image/pastas.png"></div>
+
 Agora sim, tendo tudo isso definido, basta abrir o terminal na pasta python e digitar "python3 service.py", ou com o python que você tiver disponível, e se divertir 😃.
 
 </div>
