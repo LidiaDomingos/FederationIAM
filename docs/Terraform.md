@@ -49,7 +49,7 @@ secret_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
 ```
 
 ::: info
-Esssa chave acima é apenas um exemplo, não sendo de uma conta real! Novamente, cuide da sua chave de acesso, pois ela é única e não pode ser liberada na internet de forma alguma. Caso perca sua chave, terá que criar um novo par na AWS.
+Essa chave acima é apenas um exemplo, não sendo de uma conta real! Novamente, cuide da sua chave de acesso, pois ela é única e não pode ser liberada na internet de forma alguma. Caso perca sua chave, terá que criar um novo par na AWS.
 :::
 
 Além do terraform.tfvars, deve-se utilizar mais um arquivo extra para identificar as variáveis e também organizar o projeto. Para isso, deve ser feito mais um arquivo chamado variables.tf, onde nele terá as variáveis usadas no projeto junto com sua descrição.
@@ -100,7 +100,7 @@ variable "users" {
 
 Nesse arquivo, é definido a variable users como um mapa de objetos, que possui um nome do usuário, o path sendo o caminho que a variável deve seguir no IAM, a policy_arn representando as políticas que o usuário possui, e tags para mais informações sobre o usuário. O default vai servir para guardar e manter os usuários que o cliente vai querer criar. Essa parte que será integrada com o python para poder manter antigos usuários e criar novos usuários. Segue um exemplo de como vai ficar após o cliente adicionar o primeiro usuário pelo python.
 
-**users.tf**
+**exemplo de users.tf**
 ```hcl
 variable "users" {
   type = map(object({
@@ -169,6 +169,8 @@ Nesse bloco, além de usarmos o resouce, foi utilizado mais alguns blocos novos.
 
 Finalmente, no último bloco, é utilizado o bloco "output", que são informações que o Terraform retorna após ter feito toda a aplicação. Dentro do bloco, devido também ás variáveis locais criadas anteriormente, se consegue pegar o nome, o access_key e o secret_key do último usuário criado guardado numa variável chamada last_user_credentials. É necessário colocar o atributo sensitive = true, por ser uma informação valiosa que não pode simplesmente sair no terminal.
 
-Pronto, agora temos toda a infraestrutura do Terraform criada. Porém, para ela ser aplicada, necessitamos de uma ajuda de um programa python.
+Para testar essa infraestrutura sem o programa python, basta apenas usar o exemplo de users.tf em users, e no resto da estrutura não precisa mudar mais nada. Para observar todas as mudanças que serâo feitas, rode no terminal *terraform plan* e para aplicar as mudanças na AWS, rode *terraform apply*. Para retornar para o estado que deve ser iniciado com python, dê um *terraform destroy* e volte o users.tf com apenas a hashtag #ultimo.
+
+Pronto, agora temos toda a infraestrutura do Terraform criada. Porém, para ela ser aplicada como o projeto pede, necessitamos de uma ajuda de um programa python.
 
 </div>

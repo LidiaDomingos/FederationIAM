@@ -97,7 +97,7 @@ while loop:
 
             with open("credentials.json", 'w') as file:
                 json.dump(dic, file, indent = 2)
-                
+
             file.close()
 
     elif resposta == "N" or resposta == "n":
@@ -106,3 +106,4 @@ while loop:
         loop = False
     else:
         print("Por favor, digite uma resposta válida!")
+

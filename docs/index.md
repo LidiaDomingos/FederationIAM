@@ -5,9 +5,9 @@ layout: home
 hero:
   name: "IAM"
   text: "Centro de Federação de Usuários"
-  tagline: Identity and Access Management
+  tagline: "Desenvolvedora: Lídia A C Domingos"
   actions:
-    - theme: alt
+    - theme: brand
       text: Objetivo
       link: /Objetivo
     - theme: alt
@@ -19,6 +19,9 @@ hero:
     - theme: alt
       text: Python
       link: /Python
+    - theme: alt
+      text: Conclusão
+      link: /Iteracoes
   image: 
       src: /image/iam-icon-logo.png
 

@@ -28,10 +28,10 @@ Com essa aplicação, se torna possível transformar o fluxo de dados que seria 
 
 ## O que isso significa no contexto do projeto?
 
-A ideia desse roteiro é exatamente automatizar essa criação e atribuição de permissões de uma forma simplificada e somente a partir do terminal para um usuário root, ou seja, que controle todos os outros usuários, conforme ilustra a imagem a seguir:
+A ideia desse roteiro é exatamente automatizar essa criação e atribuição de permissões na AWS de uma forma simplificada e somente a partir do terminal para um usuário root, ou seja, que controle todos os outros usuários, conforme ilustra a imagem a seguir:
 
 <div style ="display:flex;align-items:center;justify-content:center;"><img src="/image/img_exemplo.svg"></div>
 
-Ou seja, por meio de interface no terminal criada com Python, os arquivos de Terraform são alterados de acordo com o que o cliente que utiliza o serviço do terminal necessita e digita. 
+Ou seja, por meio da interface no terminal criada com Python, os arquivos de Terraform são alterados de acordo com o que o cliente que utiliza o serviço do terminal necessita e digita. 
 
 </div>

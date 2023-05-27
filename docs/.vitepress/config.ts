@@ -18,7 +18,8 @@ export default defineConfig({
           { text: 'Objetivo', link: '/Objetivo' },
           { text: 'Pré-requisitos', link: '/Requisitos' },
           { text: 'Terraform', link: '/Terraform' },
-          { text: 'Python', link: '/Python' }
+          { text: 'Python', link: '/Python' },
+          { text: 'Iterações e Agradecimentos', link: '/Iteracoes' }
         ]
       }
     ],
