@@ -1,6 +1,3 @@
----
-outline: deep
----
 <div style = "text-align: justify">
 
 # Integrando com Python
