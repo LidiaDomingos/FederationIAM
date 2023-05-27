@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "IAM"
   text: "Centro de Federação de Usuários"
-  tagline: "Desenvolvedora: Lídia A C Domingos"
+  tagline: Desenvolvedora Lídia A C Domingos
   actions:
     - theme: brand
       text: Objetivo
