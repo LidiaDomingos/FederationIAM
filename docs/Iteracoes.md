@@ -8,7 +8,7 @@ Pode-se notar que o final do python não é ideal, e nem a forma como as credenc
 
 * Luciano Felix | [Github](https://github.com/FelixLuciano) : Template do site de toda a documentação . 
 
-    Feito utilizando [Vitepresse](https://vitepress.dev/guide/what-is-vitepress).
+    Feito utilizando [Vitepress](https://vitepress.dev/guide/what-is-vitepress).
 
 <div style ="display:flex;align-items:center;justify-content:center;"><img src="/image/cat-sticker-line-sticker.gif"></div>
 
